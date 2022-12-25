@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import {IoPaperPlaneOutline} from 'react-icons/io5'
 
 const Navbar = () => {
 
@@ -27,19 +28,35 @@ const Navbar = () => {
 
   }, [])
 
-   
+
 
   return (
     <>
-      <header   className='header w-full fixed -bottom-1 left-0 z-z-fixed bg-white' id='mobile-nav'>
+      <header className='
+      header w-full fixed -bottom-1 left-0 z-z-fixed bg-white
+      md:top-0 md:h-fit    md:bg-body-color
+      md:px-lg-padding xl:px-xl-padding px-sm-padding  
 
-        <nav className='nav container max-w-[968] h-header-height flex justify-between items-center'>
+      ' id='mobile-nav'>
 
-          <a href="#" className='nav_logo text-title-color font-font-medium hover:text-first-color'> Alexa</a>
+        <nav className='nav container max-w-[968px] mx-auto h-header-height flex justify-between items-center'>
 
-          <div className="nav_menu fixed -bottom-[100%] left-0 w-full bg-body-color" id="nav-menu">
+          <a href="#" className='nav_logo text-title-color font-font-medium hover:text-first-color
+          md:font-bold
+          '> Alexa</a>
 
-            <ul className="nav_list grid ">
+
+          {/* THIS BELOW DIV POPS UP IN MOBILE */}
+          <div className="nav_menu 
+          fixed -bottom-[100%] left-0 w-full bg-body-color
+
+          md:bottom-full md:top-0  md:shadow-none md:bg-transparent
+          md:w-fit md:rounded-none md:static
+          md:h-[25px] md:p-0 md:flex md:items-center
+
+          " id="nav-menu">
+
+            <ul className="nav_list grid md:justify-end justify-center">
 
               <li className="nav_item">
                 <a href="#Home" className="nav_link">
@@ -66,19 +83,25 @@ const Navbar = () => {
                   <i className="uil uil-scenery nav_icon"></i> Portfolio
                 </a>
               </li>
-              <li className="nav_item">
-                <a href="#Contact" className="nav_link">
-                  <i className="uil uil-message nav_icon"></i> Contact me
+              <li className="nav_item ">
+                <a href="#Contact" className="nav_link ">
+                  <i className="uil uil-message nav_icon"></i> <span className='flex whitespace-nowrap items-center'>Contact Me <IoPaperPlaneOutline className='ml-2 text-h3-font-size text-first-color hidden'/>
+                  </span> 
                 </a>
-              </li>
+              </li> 
 
             </ul>
 
-            <i onClick={removeMenu} className="uil uil-times nav_close absolute right-[1.2rem] bottom-[.5rem] text-[1.5rem] cursor-pointer text-first-color hover:text-first-color-alt"></i>
+            <i onClick={removeMenu} className="uil uil-times nav_close absolute right-[1.2rem] bottom-[.5rem] text-[1.5rem] cursor-pointer text-first-color hover:text-first-color-alt
+            md:hidden
+            "></i>
           </div>
 
-          <div className='nav_btns'>
-            <div onClick={showmenu} className="nav_toggle text-[1.1rem] text-title-color font-font-medium cursor-pointer hover:text-first-color" id="nav-toggle">
+          <div className='nav_btns md:hidden'>
+            <div onClick={showmenu} className="nav_toggle text-[1.1rem] text-title-color font-font-medium cursor-pointer hover:text-first-color
+            
+            
+            " id="nav-toggle">
               <i className='uil uil-apps'></i>
             </div>
           </div>

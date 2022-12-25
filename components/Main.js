@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import $ from 'jquery';
 // import { FaQuoteRight, FaStarHalf } from 'react-icons/fa'
 
+
 import { Pagination, Navigation, Autoplay } from "swiper";
 
 import "swiper/css";
@@ -11,6 +12,9 @@ import "swiper/css/pagination";
 
 
 import { backskills, FrontSkills, StateMangement } from '../Data/Skill'
+import Link from 'next/link';
+import { myservices } from '../Data/Services';
+import { myportfolio } from '../Data/Portfolio';
 
 
 
@@ -19,11 +23,18 @@ const Main = () => {
   const [Backend, setBackend] = useState([])
   const [Frontend, setFrontend] = useState([])
   const [Statemanage, setStatemanage] = useState([])
+  const [services, setServices] = useState([])
+  const [Projects, setProjects] = useState([])
 
   useEffect(() => {
     setBackend(backskills)
     setFrontend(FrontSkills)
+
     setStatemanage(StateMangement)
+    setServices(myservices)
+    setProjects(myportfolio)
+
+
   }, [])
 
   useEffect(() => {
@@ -108,18 +119,25 @@ const Main = () => {
   }
 
 
+  const copyphone = (e) => {
+    const phone = e.target.innerHTML.replace('-', '')
+    navigator.clipboard.writeText(phone);
+
+  }
+
 
 
 
   return (
     <>
+
       <main className='main w-full' id='Home'>
 
         <section className='home section w-full' id='home'>
 
           <div className="home_container container grid mx-auto px-sm-padding md:px-lg-padding xl:px-xl-padding" >
 
-            <div className="home_content grid w-full md:mt-10  md:grid-cols-[.5fr_3fr_2fr] lg:grid-cols-[0.5fr_5fr_4fr] 
+            <div className="home_content grid w-full md:mt-20  md:grid-cols-[.5fr_3fr_2fr] lg:grid-cols-[0.5fr_5fr_4fr] 
               xl:grid-cols-[0.8fr_4fr_3fr]
             pt-5 items-center ">
 
@@ -161,9 +179,14 @@ const Main = () => {
               </div>
               {/* front description */}
               <div className='Home_Details col-span-2 md:col-span-1 md:order-2 '>
-                <h1 className='text-[2.2rem] sm:text-[2rem] lg:text-[2.5rem] xl:text-[3rem] text-title-color '>Hi, I&apos;m Umair Ahmed </h1>
+                <h1 className='text-[2.2rem] sm:text-[2rem] lg:text-[2.5rem] xl:text-[3rem] text-[#000036] '>Hi, I&apos;m Umair Ahmed </h1>
                 <h3 className='text-h3-font-size font-medium text-text-color mb-5'>MERN Stack / Next js Developer </h3>
-                <p className='mb-2' >6+ Months experience in MERN Stack / Next js development. Designing and developing functional components, user interfaces, APIs, Optimizing, Securing and testing web functionality and efficiencies. </p>
+                <div className='mb-2' >
+                  {/* 6+ Months experience in MERN Stack / Next js development. Designing and developing functional components, user interfaces, APIs, Optimizing, Securing and testing web functionality and efficiencies.  */}
+                  <b>Founder and CEO <a target="_blank" href="https://www.Technorexsol.com" rel="noopener noreferrer">@Technorexsol.com</a></b> <br />
+                  <p>Providing Custom Full Stack Web development services. Using Latest Web technologies React JS, MERN Stack, Next JS.</p>
+
+                </div>
                 <a className='button mt-10' href="#Contact">Contact Me <i className='uil uil-message'></i></a>
               </div>
 
@@ -182,7 +205,7 @@ const Main = () => {
 
       </main>
 
-      <section id='About'>
+      <section id='About' className='pt-[4rem]'>
         <div className='px-sm-padding md:px-lg-padding xl:px-xl-padding '>
           <h1 className='text-big-font-size text-center'>About Me</h1>
           <p className='section_subtitle'>My Introduction</p>
@@ -194,20 +217,20 @@ const Main = () => {
             </div>
 
             <div>
-              <p className='text-center md:text-left mt-3'>Web developer, with extensive knowlege and years of experience, working in web technologies and UI/UX design, deleivering quality work.</p>
+              <p className='text-center md:text-left mt-3'>Web developer, with extensive knowlege and years of experience, working in web technologies. Designing and developing components, user interfaces, backend API&apos;s, testing and Optimizing web functionality and efficiencies. Contact me for free consultation.</p>
 
               <div className='about_info flex justify-evenly mt-8'>
                 <div>
-                  <h2 className='!font-extrabold text-h1-font-size text-center'>06+</h2>
-                  <p className='text-center'>Months <br /> Experience</p>
+                  <h2 className='!font-extrabold text-h1-font-size text-center'>02+</h2>
+                  <p className='text-center'>Years <br /> Experience</p>
                 </div>
                 <div>
-                  <h2 className='!font-extrabold text-h1-font-size text-center'>15+</h2>
+                  <h2 className='!font-extrabold text-h1-font-size text-center'>25+</h2>
                   <p className='text-center'>Completed<br /> Projects</p>
                 </div>
                 <div>
-                  <h2 className='!font-extrabold text-h1-font-size text-center'>02+</h2>
-                  <p className='text-center'>Companies<br /> Worked</p>
+                  <h2 className='!font-extrabold text-h1-font-size text-center'>10+</h2>
+                  <p className='text-center'>Satisfied<br /> Clients</p>
                 </div>
               </div>
 
@@ -224,9 +247,9 @@ const Main = () => {
         </div>
       </section>
 
-      <section id='Skills' className='container mx-auto'>
+      <section className='container mx-auto'>
 
-        <div className='mt-32 px-sm-padding md:px-lg-padding xl:px-xl-padding'>
+        <div id='Skills' className='pt-32 px-sm-padding md:px-lg-padding xl:px-xl-padding'>
           <h1 className='section_title'>My Skills</h1>
           <p className='section_subtitle'>My Technical Level</p>
 
@@ -345,117 +368,74 @@ const Main = () => {
         </div>
       </section>
 
-      <section id='Services' className='px-sm-padding md:px-lg-padding xl:px-xl-padding container mx-auto'>
+      <section id='Services' className='px-sm-padding md:px-lg-padding xl:px-xl-padding container mx-auto pt-16'>
 
-        <div className='mt-16'>
+        <div>
           <h1 className='section_title'>My Services</h1>
           <p className='section_subtitle'>What I Offer to my Customers</p>
         </div>
 
-        <div className='service_container container grid grid-cols-2'>
-
-          {/* --------------SERVICE # 1-------------- */}
-          <div className='service-content rounded-lg duration-300 bg-container-color'>
-
-            <div className='relative hover:cursor-pointer' onClick={toggleservicemodal}>
-              <i className='uil uil-web-grid text-h1-font-size text-first-color mb-3'></i>
-              <h3 className='text-h3-font-size mb-3 font-medium'>UI/UX <br /> Design</h3>
-
-              <span className='service-modal-button group button-small cursor-pointer text-small-font-size inline-block rounded-lg font-medium  text-first-color hover:fill-first-color-alt duration-200'   >View more
-                <i className='uil uil-arrow-right ml-2 text-normal-font-size duration-300 group-hover:ml-4 '></i>
-
-              </span>
-            </div>
-
-            <div className='service-modal opacity-0 invisible duration-300 z-z-modal flex justify-center items-center fixed top-0 left-0 right-0 bottom-0'>
-              <div className='service-modal-content relative bg-container-color rounded-lg p-[1.5rem] '>
-                <h4 className='text-h2-font-size font-medium mb-2 text-title-color'>UI/UX <br /> Design</h4>
-                <i onClick={hideservicemodal} className='uil uil-times service-model-close absolute top-[1rem] right-[1rem] text-[1.5rem] text-first-color cursor-pointer'></i>
-
-                <ul className='space-y-3'>
-
-                  <li className='service-modal-service flex whitespace-nowrap'>
-                    <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
-                    <p className='self-center'>I develop the user Interface.</p>
-                  </li>
-
-                  <li className='service-modal-service flex whitespace-nowrap'>
-                    <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
-                    <p className='self-center'>I develop the Frontend Design.</p>
-                  </li>
-
-                  <li className='service-modal-service flex whitespace-nowrap'>
-                    <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
-                    <p className='self-center'>I develop the user Interface.</p>
-                  </li>
-
-                  <li className='service-modal-service flex whitespace-nowrap'>
-                    <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
-                    <p className='self-center'>I develop the user Interface.</p>
-                  </li>
+        <div className='service_container container grid grid-cols-2 md:grid-cols-3'>
 
 
-                </ul>
+          {
+            services?.map(s => {
+              return (
+                <div key={s?.Name} className='service-content rounded-lg duration-300 bg-container-color'>
 
-              </div>
-            </div>
+                  <div className='relative hover:cursor-pointer' onClick={toggleservicemodal}>
+                    <i className={`${s.Icon} text-h1-font-size text-first-color mb-3`}></i>
+                    <h3 className='text-h3-font-size mb-3 font-medium'>{s.Name}</h3>
 
-          </div>
+                    <span className='service-modal-button group button-small cursor-pointer text-small-font-size inline-block rounded-lg font-medium  text-first-color hover:fill-first-color-alt duration-200'   >View more
+                      <i className='uil uil-arrow-right ml-2 text-normal-font-size duration-300 group-hover:ml-4 '></i>
 
-          {/* --------------SERVICE # 2-------------- */}
-          <div className='service-content rounded-lg duration-300 bg-container-color'>
+                    </span>
+                  </div>
 
-            <div className='relative hover:cursor-pointer ' onClick={toggleservicemodal} >
-              <i className='uil uil-web-grid text-h1-font-size text-first-color mb-3'></i>
-              <h3 className='text-h3-font-size mb-3 font-medium'>UI/UX <br /> Design</h3>
+                  <div className='service-modal   opacity-0 invisible duration-300 z-z-modal flex justify-center items-center fixed top-0 left-0 right-0 bottom-0'>
 
-              <span className='service-modal-button group button-small cursor-pointer text-small-font-size inline-block rounded-lg font-medium  text-first-color hover:fill-first-color-alt duration-200' >View more
-                <i className='uil uil-arrow-right ml-2 text-normal-font-size duration-300 group-hover:ml-4 '></i>
+                    <div className='service-modal-content relative bg-container-color rounded-lg p-[1.5rem] '>
 
-              </span>
-            </div>
+                      <div className='flex justify-between pb-5 md:space-x-10'>
+                        <h4 className='text-h2-font-size font-medium mb-2 text-title-color w-fit'>{s.Name}</h4>
+                        <div onClick={hideservicemodal} className='flex w-20 items-center -mt-5 -mr-5 cursor-pointer'>
+                          <i className='uil uil-times service-model-close  text-[1.5rem] text-first-color '></i>
+                          <h2 >Close</h2>
+                        </div>
+                      </div>
 
-            <div className='service-modal opacity-0 invisible duration-300 z-z-modal flex justify-center items-center fixed top-0 left-0 right-0 bottom-0'>
-              <div className='service-modal-content relative bg-container-color rounded-lg p-[1.5rem] '>
-                <h4 className='text-h2-font-size font-medium mb-2 text-title-color'>UI/UX <br /> Design</h4>
-                <i onClick={hideservicemodal} className='uil uil-times service-model-close absolute top-[1rem] right-[1rem] text-[1.5rem] text-first-color cursor-pointer'></i>
+                      <ul className='space-y-3'>
 
-                <ul className='space-y-3'>
+                        {
+                          s?.Bullets.map(B => {
+                            return (
+                              <li key={B[0]} className='service-modal-service flex whitespace-nowrap'>
+                                <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
+                                <p className='self-center'>{B}</p>
+                              </li>
+                            )
+                          })
+                        }
+                      </ul>
 
-                  <li className='service-modal-service flex whitespace-nowrap'>
-                    <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
-                    <p className='self-center'>I jhfdskljflksdjf the user Interface.</p>
-                  </li>
+                    </div>
 
-                  <li className='service-modal-service flex whitespace-nowrap'>
-                    <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
-                    <p className='self-center'>I develop the Frontend Design.</p>
-                  </li>
+                  </div>
+                </div>
+              )
+            })
 
-                  <li className='service-modal-service flex whitespace-nowrap'>
-                    <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
-                    <p className='self-center'>I develop the user Interface.</p>
-                  </li>
+          }
 
-                  <li className='service-modal-service flex whitespace-nowrap'>
-                    <i className='uil uil-check-circle text-first-color mr-2 text-2xl'></i>
-                    <p className='self-center'>I develop the user Interface.</p>
-                  </li>
-
-
-                </ul>
-
-              </div>
-            </div>
-
-          </div>
 
         </div>
+
       </section>
 
-      <section id='Portfolio' className='px-sm-padding md:px-lg-padding xl:px-xl-padding'>
+      <section id='Portfolio' className='px-sm-padding md:px-lg-padding xl:px-xl-padding pt-16'>
 
-        <div className='mt-16'>
+        <div  >
           <h1 className='section_title'>My Portfolio</h1>
           <p className='section_subtitle'>Take a look at my Previous work</p>
         </div>
@@ -464,37 +444,44 @@ const Main = () => {
           <li data-filter="all" onClick={ProjectActive} className="list Project-active rounded-lg duration-200">ALL</li>
           <li data-filter="Frontend" onClick={ProjectActive} className="list rounded-lg duration-200">Frontend Projects</li>
           <li data-filter="FullStack" onClick={ProjectActive} className="list rounded-lg duration-200">Full Stack Projects</li>
-          <li data-filter="CMS" onClick={ProjectActive} className="list rounded-lg duration-200">CMS Projects</li>
+          {/* <li data-filter="CMS" onClick={ProjectActive} className="list rounded-lg duration-200">CMS Projects</li> */}
         </ul>
 
         <div className='project-container 
-        grid 
-        grid-cols-2
-        md:grid-cols-3
-        lg:grid-cols-4
-         
-      
-        
-        '>
-          <a href="" className='project-box all'>
-            <img src="/project.png" alt="" />
-          </a>
+        flex  flex-wrap   gap-y-5  gap-x-5 min-h-[300px]
+        '
+        // grid
+        // grid-cols-2
+        // md:grid-cols-3
+        // lg:grid-cols-4
 
-          <a href="" className='project-box all'>
-            <img src="/profile.png" alt="" />
-          </a>
+        >
+          {
+            Projects?.map(p => {
+              return (
+                <div key={p.Name} className="rounded-md  overflow-hidden portfolio-item">
 
-          <a href="" className='project-box Frontend'>
-            <img src="/testimonial1.jpg" alt="" />
-          </a>
+                  <div className={`project-box group relative ${p.Class}`} target="_blank" rel="noreferrer" >
+                    <div className='bg-gray-900 flex flex-col bottom-0 text-white text-center pt-2 z-10 duration-200 h-10 group-hover:h-40  overflow-hidden absolute w-full'>
 
-          <a href="" className='project-box FullStack'>
-            <img src="/testimonial2.jpg" alt="" />
-          </a>
+                      <p className='text-lg'>{p.Name}</p>
+                      <p className='text-left pl-3 text-xs mt-3'>{p.Description}</p>
 
-          <a href="" className='project-box FullStack'>
-            <img src="/testimonial3.jpg" alt="" />
-          </a>
+                      <a href={p.Url} target="_blank" rel='noreferrer' className='portfolio-demo-button border border-1 w-[120px] whitespace-nowrap demo-button'>
+                        <i className='uil uil-arrow-right  opacity-0 '></i>
+                        View Demo
+                      </a>
+
+                    </div>
+                    <img className={`group-hover:scale-105 duration-200`} src={`${p.Image}`} alt={`${p.Name}`} />
+                  </div>
+                </div>
+              )
+            })
+          }
+
+
+
 
         </div>
 
@@ -528,7 +515,7 @@ const Main = () => {
 
       </section>
 
-      <section id='Project' className='mt-10 '>
+      <section id='Project' className='mt-10'>
 
         <div className='project_bg bg-first-color pt-[3rem] md:pt-0  '>
           <div className='project_container flex flex-col container mx-auto md:flex-row justify-center  '>
@@ -557,7 +544,7 @@ const Main = () => {
 
         <Swiper
 
-          slidesPerView={1}
+          slidesPerView='auto'
           spaceBetween={20}
           pagination={{
             dynamicBullets: true,
@@ -649,7 +636,7 @@ const Main = () => {
 
       </section>
 
-      <section id='Contact' className='container mx-auto mt-10 px-sm-padding md:px-lg-padding xl:px-xl-padding'>
+      <section id='Contact' className='container mx-auto pt-10 px-sm-padding md:px-lg-padding xl:px-xl-padding'>
 
         <div className='Contact section '>
 
@@ -667,7 +654,7 @@ const Main = () => {
                     <i class="uil uil-phone contact_icon text-4xl text-first-color mr-2"></i>
                     <div>
                       <h3 className='contact_title'>Call Me</h3>
-                      <span className='contact_subtitle'>+92-3125219496</span>
+                      <p onClick={copyphone} className='contact_subtitle hover:cursor-pointer'>+92-3125219496</p>
                     </div>
                   </div>
 
@@ -676,7 +663,7 @@ const Main = () => {
 
                     <div>
                       <h3 className='contact_title'>Email Me</h3>
-                      <span className='contact_subtitle'>emailumair125125@gmail.com</span>
+                      <a href="mailto:emailumair125125@gmail.com" className='contact_subtitle'>emailumair125125@gmail.com</a>
                     </div>
                   </div>
 
@@ -720,37 +707,37 @@ const Main = () => {
 
       </section>
 
-      <footer className='footer mt-[1rem] text-white '>
+      <footer className='footer mt-[2.5rem] text-white '>
         <div className='footer_bg bg-first-color-second '>
           <div className='footer_container container grid px-sm-padding md:px-lg-padding xl:px-xl-padding'>
             <div>
               <h1 className='text-h1-font-size mb-[0.25rem] text-white'> Umair Ahmed</h1>
-              <span className='text-normal-font-size '>Frontend Developer</span>
+              <span className='text-normal-font-size '>Full Stack Developer</span>
             </div>
 
             <ul className='footer_links flex flex-col gap-y-6 my-6 text-h3-font-size'>
               <li>
-                <a href="#services">Services</a>
+                <a href="#Services">Services</a>
               </li>
               <li>
-                <a href="#portfolio">Portfolio</a>
+                <a href="#Portfolio">Portfolio</a>
               </li>
               <li>
-                <a href="#contact">Contact</a>
+                <a href="#Contact">Contact</a>
               </li>
             </ul>
 
             <div className="footer_social space-x-5 text-h1-font-size ">
 
-              <a href="https://www.facebook.com" target="_blank" rel="noreferrer" >
+              <a href="https://www.facebook.com/profile.php?id=100042152975571" target="_blank" rel="noreferrer" >
                 <i className='uil uil-facebook-f '></i>
               </a>
 
-              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" >
+              <a href="https://www.linkedin.com/in/umair-ahmed-6262b1167/" target="_blank" rel="noreferrer" >
                 <i className='uil uil-linkedin'></i>
               </a>
 
-              <a href="https://www.github.com" target="_blank" rel="noreferrer" >
+              <a href="https://github.com/Umairahmed37" target="_blank" rel="noreferrer" >
                 <i className='uil uil-github-alt'></i>
               </a>
 
@@ -769,7 +756,9 @@ const Main = () => {
 
 
       {/* scroll up button */}
-      <div id="scrolltop-icon" className='scrolltop-icon duration-200 fixed right-10 bottom-0 h-10 w-10 bg-first-color flex justify-center items-center text-white opacity-90'>
+      <div id="scrolltop-icon" className='scrolltop-icon duration-200 fixed right-10 bottom-0  h-10 w-10 bg-first-color flex justify-center items-center text-white opacity-90
+      md:-bottom-10 md:right-20
+      '>
         <a href="#" className='scrollup' id='scroll-up'>
           <i className='uil uil-arrow-up scrollup_icon text-h2-font-size '></i>
         </a>
